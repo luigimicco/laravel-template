@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use App\Models\User;
+use Carbon\Carbon;
 
 class LoginRequest extends FormRequest
 {
@@ -39,7 +41,16 @@ class LoginRequest extends FormRequest
      */
     public function authenticate(): void
     {
+
         $this->ensureIsNotRateLimited();
+
+        // avoid access to disabled users 
+        $user = User::where('email', '=', $this->only('email'))->first();
+        if ($user && $user->active == 0) {
+            throw ValidationException::withMessages([
+                'email' => trans('auth.disabled'),
+            ]);
+        }
 
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
@@ -48,6 +59,10 @@ class LoginRequest extends FormRequest
                 'email' => trans('auth.failed'),
             ]);
         }
+
+        // update last_login
+        $user->last_login = Carbon::now()->toDateTimeString();
+        $user->save();
 
         RateLimiter::clear($this->throttleKey());
     }
@@ -80,6 +95,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->string('email')) . '|' . $this->ip());
     }
 }
