@@ -11,3 +11,10 @@
 
 ### fix sass deprecation warning
  - npm i sass@1.77.6 --save-exact
+
+## AdminLte package
+ - composer require jeroennoten/laravel-adminlte
+ - php artisan adminlte:install
+
+### Authentication style views
+ - php artisan adminlte:install --only=auth_views
