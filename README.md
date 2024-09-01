@@ -30,7 +30,8 @@
 ## Use AdminLte views and layout
  - ``php artisan storage:link``
  - ``php artisan adminlte:install --only=main_views``
- - add folder *images* to *storage\app\public* for app logo on auth views
+ - ``php artisan adminlte:install --only=auth_views``
+  - add folder *images* to *storage\app\public* for app logo on auth views
  - add folder *login* to *storage\app\public\images* for random images on auth views
  - add new route for random image on auth views
  - add new route for profile image and update *ProfileController.php*
