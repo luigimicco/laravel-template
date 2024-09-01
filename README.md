@@ -26,3 +26,12 @@
  - changes to *app\Http\Request\Auth\LoginRequest.php@authenticate* to add support for inactive users and updating for new field *last_login*
  - add language item for disabled account message
  - add folder *profiles* to *storage\app* for user's avatar
+
+## Use AdminLte views and layout
+ - ``php artisan storage:link``
+ - ``php artisan adminlte:install --only=main_views``
+ - add folder *images* to *storage\app\public* for app logo on auth views
+ - add folder *login* to *storage\app\public\images* for random images on auth views
+ - add new route for random image on auth views
+ - add new route for profile image and update *ProfileController.php*
+ - add *public/font* folder 
