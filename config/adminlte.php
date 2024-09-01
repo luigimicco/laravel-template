@@ -298,96 +298,57 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
+            'text'        => '',
+            'icon'        => 'fas fa-fw fa-info',
+            'url'  => '#',
+            'topnav' => true,
+            'data' => [
+                'toggle' => "modal",
+                'target' => "#modalCustom",
+            ]
         ],
         [
-            'type' => 'fullscreen-widget',
+            'type'         => 'navbar-search',
+            'text'         => 'search',
+            'topnav_right' => false,
+        ],
+
+        [
+            'type'         => 'darkmode-widget',
+            'topnav_right' => true, // Or "topnav => true" to place on the left.
+        ],
+        [
+            'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'header' => 'PROFILO',
         ],
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
+            'text'        => 'Profilo',
+            'icon'        => 'fas fa-fw fa-user',
+            'url'  => 'profile',
         ],
         [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
+            'text'        => 'Parametri',
+            'icon'        => 'fas fa-fw fa-cogs',
+            'url'  => 'admin/params',
+            'can' => 'isManager'
         ],
-        ['header' => 'account_settings'],
+
+
+
         [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'header' => 'CONFIGURAZIONE',
+            'can' => 'isAdmin'
         ],
         [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
-        ],
-        [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
-        ],
-        [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
+            'text'        => 'Pannello di controllo',
+            'icon'        => 'fas fa-fw fa-cogs',
+            'url'  => 'admin/acp',
+            'can' => 'isAdmin'
         ],
     ],
 
