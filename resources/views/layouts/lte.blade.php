@@ -26,12 +26,11 @@
 @stop
 
 @section('js')
-    <!-- script src="{{ asset('js/commons.js') }}"></script -->
+
 @stop
 
 @push('js')
     @vite('resources/js/app.js')
-    <!-- script src="{{ asset('js/commons.js') }}"></script -->
 @endpush
 
 @section('adminlte_css')
