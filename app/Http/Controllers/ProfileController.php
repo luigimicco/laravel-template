@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -56,5 +57,21 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function avatar($id)
+    {
+        $user = User::findOrFail($id);
+        $data =  $user->user_avatar();
+
+        return response()->stream(function () use ($data) {
+            $im = imagecreatefromstring(base64_decode($data));
+            try {
+                imagejpeg($im);
+            } finally {
+                $im && imagedestroy($im);
+                $im = null;
+            }
+        }, 200, ['Content-type' => 'image/jpeg']);
     }
 }

@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Intervention\Image\Laravel\Facades\Image;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
