@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\File;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +37,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/avatar/{id}', [ProfileController::class, 'avatar']);
 });
+
+/********************************************
+ Pagini accessibili solo ad admin
+ *********************************************/
+Route::middleware('can:isAdmin')->name('admin.')->prefix('admin')->group(function () {
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/acp', 'index')->name('acp');
+        Route::get('/artisan/{action}', 'artisan')->name('artisan');
+    });
+});
+
 
 require __DIR__ . '/auth.php';
