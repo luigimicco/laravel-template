@@ -36,3 +36,7 @@
  - add new route for random image on auth views
  - add new route for profile image and update *ProfileController.php*
  - add *public/font* folder 
+
+ ## Apply user levels
+ - update *app\Providers\AuthServiceProvider.php* to add gate's functions
+ - add sample menu by levels to *config\adminlte.php* 

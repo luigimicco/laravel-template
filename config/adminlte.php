@@ -330,7 +330,9 @@ return [
             'text'        => 'Profilo',
             'icon'        => 'fas fa-fw fa-user',
             'url'  => 'profile',
+            'can' => 'isUser'
         ],
+
         [
             'text'        => 'Parametri',
             'icon'        => 'fas fa-fw fa-cogs',
@@ -338,7 +340,26 @@ return [
             'can' => 'isManager'
         ],
 
+        [
+            'text'        => 'User menu',
+            'icon'        => 'fas fa-fw fa-book',
+            'url'  => '#',
+            'can' => 'isUser'
+        ],
 
+        [
+            'text'        => 'Manager menu',
+            'icon'        => 'fas fa-fw fa-book',
+            'url'  => '#',
+            'can' => 'isManager'
+        ],
+
+        [
+            'text'        => 'Admin menu',
+            'icon'        => 'fas fa-fw fa-book',
+            'url'  => '#',
+            'can' => 'isAdmin'
+        ],
 
         [
             'header' => 'CONFIGURAZIONE',
